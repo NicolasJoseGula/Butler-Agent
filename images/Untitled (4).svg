@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50" style="white-space: pre;">
+    LLM Agent Reasoning Loop
+  </text>
+  <rect x="320" y="80" width="160" height="60" rx="8" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <text x="400" y="115" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white" style="white-space: pre;">
+    Input Query
+  </text>
+  <path d="M 400 140 L 400 180" stroke="#34495e" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <rect x="320" y="180" width="160" height="60" rx="8" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+  <text x="400" y="215" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white" style="white-space: pre;">
+    Thought
+  </text>
+  <path d="M 400 240 L 400 280" stroke="#34495e" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <rect x="320" y="280" width="160" height="60" rx="8" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+  <text x="400" y="315" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white" style="white-space: pre;">
+    Act
+  </text>
+  <path d="M 400 340 L 400 380" stroke="#34495e" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <rect x="320" y="380" width="160" height="60" rx="8" fill="#f39c12" stroke="#e67e22" stroke-width="2"/>
+  <text x="400" y="415" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white" style="white-space: pre;">
+    Observe
+  </text>
+  <path d="M 400 440 L 400 490" stroke="#34495e" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 400 490 L 480 530 L 400 570 L 320 530 Z" fill="#2ecc71" stroke="#27ae60" stroke-width="2"/>
+  <text x="400" y="525" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="white" style="white-space: pre;">
+    Desired
+  </text>
+  <text x="400" y="542" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="white" style="white-space: pre;">
+    Outcome?
+  </text>
+  <path d="M 480 530 L 620 530" stroke="#27ae60" stroke-width="3" fill="none" marker-end="url(#arrowhead-green)"/>
+  <text x="550" y="520" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#27ae60" style="white-space: pre;">
+    Yes
+  </text>
+  <rect x="620" y="500" width="120" height="60" rx="8" fill="#27ae60" stroke="#229954" stroke-width="2"/>
+  <text x="680" y="535" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white" style="white-space: pre;">
+    End
+  </text>
+  <path d="M 320 530 L 200 530 L 200 210 L 320 210" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrowhead-red)" stroke-dasharray="5,5"/>
+  <text x="149.619" y="360.278" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#e74c3c" style="white-space: pre; font-size: 14px;">
+    No
+  </text>
+  <text x="145.961" y="378.415" font-family="Arial, sans-serif" font-size="12" fill="#e74c3c" style="white-space: pre; font-size: 12px;">
+    (loop)
+  </text>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#34495e"/>
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#27ae60"/>
+    </marker>
+    <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#e74c3c"/>
+    </marker>
+  </defs>
+  <text x="399.98" y="588.9" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#7f8c8d" font-style="italic" style="white-space: pre; font-size: 12px;">
+    The agent iterates through Think-Act-Observe until the goal is achieved
+  </text>
+</svg>
