@@ -1,8 +1,16 @@
 # Entry point
 from butler.agent import run_agent_loop
 
-user_query = "What is the weather today?"
+context = []
 
-print(f"[USER]: {user_query}")
-print(f"[ASSISTANT]: {run_agent_loop(user_query)}")
+while True:
+    user_input = input("\n[USER]: ")
+    
+    if user_input.lower() in ["q", "quit", "exit"]:
+        print("Goodbye!")
+        break
+    
+    context.append({"role": "user", "content": user_input})
+    response = run_agent_loop(context)
+    print(f"[ASSISTANT]: {response}")
 

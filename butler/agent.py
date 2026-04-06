@@ -6,8 +6,8 @@ from butler.tools import TOOLS_REGISTRY, TOOL_NAME_TO_FUNC
 
 MAX_ITERATIONS = 5
 
-def run_agent_loop(user_query: str) -> str:
-    context = [{"role":"user", "content": user_query}]
+def run_agent_loop(context: list) -> str:
+    # context = [{"role":"user", "content": user_query}]
     
     print("[ENTERING AGENT LOOP]")
     
