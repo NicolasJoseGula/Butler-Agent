@@ -1,5 +1,7 @@
 # Butler Agent
 
+![](./butler_agent.png)
+
 A conversational AI agent built with the **THINK → ACT → OBSERVE** loop, capable of using real-world tools to answer questions and manage state across a multi-turn conversation.
 
 ---
