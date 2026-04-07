@@ -13,4 +13,5 @@ while True:
     context.append({"role": "user", "content": user_input})
     response = run_agent_loop(context)
     print(f"[ASSISTANT]: {response}")
+    context.append({"role": "assistant", "content": response})
 
