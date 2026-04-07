@@ -25,6 +25,8 @@ The agent can chain multiple tool calls in a single response, handle errors grac
 - Wardrobe state management (get items, wash clothing)
 - Tool chaining — the agent decides which tools to call and in what order
 - Graceful error handling for unknown tools and missing wardrobe items
+- REST API via FastAPI — interact with the agent over HTTP with session management
+- Professional logging with timestamps and log levels
 - Clean separation of concerns: client, agent loop, tools, prompts
 
 ---
@@ -33,16 +35,18 @@ The agent can chain multiple tool calls in a single response, handle errors grac
 
 ```
 Butler-Agent/
+├── api/
+│   ├── app.py          # FastAPI app — POST /chat, DELETE /session/{id}
+│   └── models.py       # Pydantic request/response models
 ├── butler/
 │   ├── client.py       # OpenAI client initialization
 │   ├── agent.py        # Core THINK-ACT-OBSERVE loop
+│   ├── logger.py       # Centralized logging configuration
 │   ├── prompts.py      # System prompt
 │   └── tools/
 │       ├── weather.py  # check_weather(city) — calls WeatherAPI
 │       └── wardrobe.py # get_wardrobe_items(), wash_clothing(item_name)
-├── tests/
-│   └── test_butler.py
-├── main.py             # Entry point — continuous conversation loop
+├── main.py             # CLI entry point — continuous conversation loop
 ├── .env.example
 └── requirements.txt
 ```
@@ -104,11 +108,17 @@ WEATHER_API_KEY=your_weather_api_key_here
 
 ### 5. Run the agent
 
+**CLI mode:**
 ```bash
 python main.py
 ```
-
 Type `q`, `quit`, or `exit` to end the session.
+
+**API mode:**
+```bash
+uvicorn api.app:app --reload
+```
+The API will be available at `http://localhost:8000`. Interactive docs at `http://localhost:8000/docs`.
 
 ---
 
@@ -136,11 +146,33 @@ Type `q`, `quit`, or `exit` to end the session.
 
 ---
 
-## Running Tests
+## API Reference
 
-```bash
-pytest tests/
+### `POST /chat`
+
+Send a message to the agent.
+
+**Request:**
+```json
+{
+  "session_id": "user-1",
+  "message": "What should I wear today in London?"
+}
 ```
+
+**Response:**
+```json
+{
+  "session_id": "user-1",
+  "response": "It's overcast and 11°C in London. I've washed your blue sweater and brown jacket..."
+}
+```
+
+### `DELETE /session/{session_id}`
+
+Clear the conversation history for a session.
+
+> **Note:** `session_id` is user-defined in this implementation. For production use, this should be replaced with proper authentication (JWT or API keys).
 
 ---
 
@@ -159,6 +191,6 @@ pytest tests/
 ## Tech Stack
 
 - [OpenAI Python SDK](https://github.com/openai/openai-python) — Responses API with tool calling
+- [FastAPI](https://fastapi.tiangolo.com/) — REST API framework
 - [WeatherAPI](https://www.weatherapi.com/) — Real-time weather data
 - [python-dotenv](https://github.com/theskumar/python-dotenv) — Environment variable management
-- [pytest](https://pytest.org/) — Testing
